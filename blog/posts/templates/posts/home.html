@@ -7,19 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    {% if posts %}
-        <h1>Blog Home Page</h1>
+    <h1>{{username}}</h1>
+
         {% for post in posts %}
-            <div>
-                <a href="">
-                    <h1>{{ post.title }}</h1>
-                </a>
-                <p>{{ post.content }}</p>
-            </div>
-            <hr>
+            forloop.first{{forloop.first}}
+            {% if forloop.counter %}
+                first loop
+            {% endif %}
+            
+            <a href=""> <h1>{{forloop.counter}} . {{ post.title }}</h1></a>
+            <p>{{ post.content }}</p>
+        {% empty %}
+            <h1>No Posts Available</h1>
+        
         {% endfor %}
-    {% else %}
-        <p>No posts available.</p>
-    {% endif %}
+
+
 </body>
 </html>

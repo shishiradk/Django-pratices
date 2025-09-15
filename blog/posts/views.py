@@ -35,7 +35,7 @@ posts = [
         "content": "The Django admin is powerful for managing your data."
     },
 ]
-posts=[]
+# posts=[]
 
 def home(request): 
     html = ""
@@ -49,7 +49,7 @@ def home(request):
         <hr>
         """
     name= "Shishir"
-    return render(request, "posts/home.html", {'posts':posts})
+    return render(request, "posts/home.html", {'posts':posts,'username':"shishir"})
 
 
 def post(request, id):
