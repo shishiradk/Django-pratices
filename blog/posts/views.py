@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 
 # Create your posts here
 posts = [
@@ -35,28 +36,38 @@ posts = [
     },
 ]
 
-def home(request):
+def home(request): 
     html = ""
     for post in posts:
         html += f"""
         <div>
-            <a href="/post/{post['id']}/'>
+            <a href="/post/{post['id']}/">
             <h1>{post['id']} - {post['title']}</h1>
             <p>{post['content']}</p>
         </div>
         <hr>
         """
-    return HttpResponse(html)
+    name= "Shishir"
+    return render(request,'posts/home.html',{"name":name,'list':['carrot']})
 
 def post(request, id):
+    post_dict = None
+    valid_id = False
     for post in posts:
         if post['id'] == id:
             post_dict = post
+            valid_id = True
             break
 
-    html = '''
-        <h1>{post_dict['title']}</h1>
-        <p>{post_dict['content']}</p>
-    
-    '''
-    return HttpResponse(html)
+    if valid_id:
+        html = f"""
+            <h1>{post_dict['title']}</h1>
+            <p>{post_dict['content']}</p>
+        """
+        return HttpResponse(html)
+    else:
+        return HttpResponseNotFound("Post Not Available")
+
+def google(request, id):
+    url = reverse("post", args=[id])
+    return HttpResponseRedirect(url)
