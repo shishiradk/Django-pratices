@@ -35,6 +35,7 @@ posts = [
         "content": "The Django admin is powerful for managing your data."
     },
 ]
+posts=[]
 
 def home(request): 
     html = ""
@@ -48,7 +49,8 @@ def home(request):
         <hr>
         """
     name= "Shishir"
-    return render(request,'posts/home.html',{"name":name,'list':['carrot']})
+    return render(request, "posts/home.html", {'posts':posts})
+
 
 def post(request, id):
     post_dict = None
