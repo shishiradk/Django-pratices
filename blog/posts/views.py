@@ -66,7 +66,7 @@ def post(request, id):
             <h1>{post_dict['title']}</h1>
             <p>{post_dict['content']}</p>
         """
-        return HttpResponse(html)
+        return render(request,"posts/post.html")
     else:
         return HttpResponseNotFound("Post Not Available")
 
