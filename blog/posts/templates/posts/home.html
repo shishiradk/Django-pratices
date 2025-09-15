@@ -7,16 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <h1>{{username}}</h1>
-
         {% for post in posts %}
-            forloop.first{{forloop.first}}
-            {% if forloop.counter %}
-                first loop
-            {% endif %}
             
-            <a href=""> <h1>{{forloop.counter}} . {{ post.title }}</h1></a>
-            <p>{{ post.content }}</p>
+            <a href=""> <h1>{{forloop.counter}} . {{ post.title | title}}</h1></a>
+            <p>{{ post.content | truncatewords:5 }}</p>
         {% empty %}
             <h1>No Posts Available</h1>
         
