@@ -62,11 +62,9 @@ def post(request, id):
             break
 
     if valid_id:
-        html = f"""
-            <h1>{post_dict['title']}</h1>
-            <p>{post_dict['content']}</p>
-        """
-        return render(request,"posts/post.html")
+        return render(request,"posts/post.html",{'post_dict':post_dict})
+
+        return render(request,"posts/post.html", )
     else:
         return HttpResponseNotFound("Post Not Available")
 

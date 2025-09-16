@@ -9,7 +9,9 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h1>Single Post</h1>
+        <a href="{% url 'post' post.id %}">Home Page</a>
+        <h1>{{post_dict.title}}</h1>
+        <p>{{post_dict.content}}</p>
 
     </body>
 </html>

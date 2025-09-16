@@ -5,5 +5,5 @@ urlpatterns = [
     # helloworld/
     path('home/', views.home,name='home'),
     # 13/
-    path("<int:id>/", views.post,name='post')
+    path("<int:id>/<str:name>/ ", views.post,name='post')
 ]
