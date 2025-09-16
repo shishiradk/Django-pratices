@@ -1,23 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Blog Home Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'posts/home.css' %}">
+{% endblock css %}
 
+{% block body %}  
     <h1>{{username |capfirst | truncatechars:4}}</h1>
-        {% for post in posts %}
-            
+        {% for post in posts %}            
             <a href="/post/{{post.id}}"> <h1>{{forloop.counter}} . {{ post.title | title}}</h1></a>
             <p>{{ post.content | truncatewords:5 }}</p>
         {% empty %}
             <h1>No Posts Available</h1>
-        
         {% endfor %}
+{% endblock body %}
 
 
-</body>
-</html>

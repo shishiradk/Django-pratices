@@ -23,4 +23,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("post/", include("posts.urls")),  # Includes posts app URLs
     path("<int:id>/", views.google),        # Added trailing slash
+    
 ]
